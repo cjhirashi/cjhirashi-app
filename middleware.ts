@@ -1,8 +1,18 @@
 import { updateSession } from "@/lib/supabase/middleware";
+import { protectAdminRoutes } from "@/lib/auth/middleware";
 import { type NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
-  return await updateSession(request);
+  // First, update the session (handle auth refresh)
+  const response = await updateSession(request);
+
+  // If updateSession redirected, return that response
+  if (response.status === 307 || response.status === 308) {
+    return response;
+  }
+
+  // Then, check admin route protection
+  return await protectAdminRoutes(request);
 }
 
 export const config = {
