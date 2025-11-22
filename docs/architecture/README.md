@@ -203,8 +203,7 @@ Valid?    if no auth  or requireMod  Input      Queries       Enforce
 app/
 ├── admin/
 │   ├── layout.tsx              # Layout con sidebar/header
-│   ├── (dashboard)/
-│   │   └── page.tsx            # Dashboard principal
+│   ├── page.tsx                # Dashboard principal
 │   ├── users/
 │   │   ├── page.tsx            # Lista de usuarios
 │   │   └── [id]/

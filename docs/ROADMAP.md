@@ -855,7 +855,7 @@ const toISO = dateToISOString(to)
 **12.6 Implementación de Frontend**
 - **Responsable**: fullstack-implementer
 - **Tareas**:
-  - Crear `app/(dashboard)/page.tsx` (Server Component)
+  - Crear `app/dashboard/page.tsx` (Server Component)
   - Implementar grid de métricas con `StatTile`
   - Implementar acciones rápidas
   - Implementar feed de actividad (desde audit_logs)

@@ -1,5 +1,8 @@
 # ADR-001: Estrategia de Implementación de RBAC
 
+> **Contexto de Versión**: Este ADR documenta la decisión de RBAC para el sistema base existente (Admin Panel),
+> implementado antes de v0.1. Corresponde al "Base pre-v0.1" sobre el cual se construye v0.1.
+
 **Estado:** Aceptado
 **Fecha:** 2025-11-11
 **Decisores:** Architecture Team

@@ -1,10 +1,14 @@
 # Arquitectura del Panel de Administración
 
+> **Contexto de Versión**: Este documento describe el sistema base existente (Admin Panel + RBAC),
+> implementado antes de v0.1. Según la filosofía de versionado del proyecto, este sistema corresponde
+> al "Base pre-v0.1" sobre el cual se construye la iteración v0.1.
+
 ## Resumen Ejecutivo
 
 Este documento define la arquitectura completa para el panel de administración con control de acceso basado en roles (RBAC) que se integrará en la aplicación Next.js 15+ existente con autenticación Supabase.
 
-**Versión:** 1.0
+**Versión:** 1.0 (Base pre-v0.1)
 **Fecha:** 2025-11-11
 **Estado:** Diseño Aprobado
 
@@ -176,8 +180,7 @@ Este documento define la arquitectura completa para el panel de administración 
 
 ```
 /admin                          [Layout con sidebar y header]
-├── (dashboard)                 [Grupo de ruta - no crea segmento URL]
-│   └── page.tsx                → /admin (Dashboard principal)
+├── page.tsx                    → /admin (Dashboard principal)
 │
 ├── users                       [Gestión de usuarios]
 │   ├── page.tsx                → /admin/users (Lista)
@@ -286,7 +289,7 @@ app/admin/layout.tsx (Server Component)
     ├── SearchBar (Client)
     └── NotificationBell (Client)
 
-app/admin/(dashboard)/page.tsx (Server Component)
+app/admin/page.tsx (Server Component)
 │
 ├── StatsGrid (Server Component)
 │   ├── StatCard (total_users)

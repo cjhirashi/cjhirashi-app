@@ -1,6 +1,9 @@
 # Database Schema - Admin Panel
 
-**Versión:** 1.0
+> **Contexto de Versión**: Este documento describe el schema de base de datos del sistema base existente (Admin Panel),
+> implementado antes de v0.1. Corresponde al "Base pre-v0.1" sobre el cual se construye v0.1.
+
+**Versión:** 1.0 (Base pre-v0.1)
 **Última Actualización:** 2025-11-11
 **Base de Datos:** PostgreSQL 15+ (Supabase)
 

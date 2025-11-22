@@ -1,5 +1,8 @@
 # ADR-004: Arquitectura de Capas de Seguridad
 
+> **Contexto de Versión**: Este ADR documenta las capas de seguridad del sistema base existente (Admin Panel),
+> implementado antes de v0.1. Corresponde al "Base pre-v0.1" sobre el cual se construye v0.1.
+
 **Estado:** Aceptado
 **Fecha:** 2025-11-11
 **Decisores:** Security Team, Architecture Team

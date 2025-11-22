@@ -1,5 +1,8 @@
 # Reporte de Evaluación de Seguridad - Admin Panel Database
 
+> **Contexto de Versión**: Este reporte evalúa la seguridad del sistema base existente (Admin Panel),
+> implementado antes de v0.1. Corresponde al "Base pre-v0.1" sobre el cual se construye v0.1.
+
 **Proyecto:** Admin Panel - Database Configuration Phase 1
 **Fecha de Evaluación:** 2025-11-11
 **Evaluador:** Security Guardian (Application Security Specialist)

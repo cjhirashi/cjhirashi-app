@@ -1,5 +1,8 @@
 # ADR-003: Estructura de API Routes y Convenciones
 
+> **Contexto de Versión**: Este ADR documenta la estructura de API del sistema base existente (Admin Panel),
+> implementado antes de v0.1. Corresponde al "Base pre-v0.1" sobre el cual se construye v0.1.
+
 **Estado:** Aceptado
 **Fecha:** 2025-11-11
 **Decisores:** Backend Team, Frontend Team

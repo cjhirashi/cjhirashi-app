@@ -907,7 +907,7 @@ export default function UnauthorizedPage() {
 ### 4.2 Crear Layout del Admin Panel
 
 ```bash
-mkdir -p app/admin/(dashboard)
+mkdir -p app/admin
 mkdir -p components/admin
 ```
 
@@ -939,7 +939,7 @@ export default async function AdminLayout({
 ### 4.3 Crear Dashboard
 
 ```typescript
-// app/admin/(dashboard)/page.tsx
+// app/admin/page.tsx
 import { requireAdmin } from '@/lib/admin/auth/require-admin';
 import { StatsGrid } from '@/components/admin/dashboard/stats-grid';
 import { RecentActivity } from '@/components/admin/dashboard/recent-activity';
