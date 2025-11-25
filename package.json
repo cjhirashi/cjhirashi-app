@@ -17,7 +17,8 @@
     "db:format": "prisma format",
     "db:seed": "dotenv -e .env.local -- tsx prisma/seed.ts",
     "db:apply-seed": "dotenv -e .env.local -- tsx scripts/apply-seed-data.ts",
-    "db:verify-seed": "dotenv -e .env.local -- tsx scripts/verify-seed-data.ts"
+    "db:verify-seed": "dotenv -e .env.local -- tsx scripts/verify-seed-data.ts",
+    "db:create-superuser": "dotenv -e .env.local -- tsx scripts/create-superuser.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

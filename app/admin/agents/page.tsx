@@ -3,7 +3,7 @@
  */
 
 import Link from 'next/link';
-import { requireAdmin } from '@/lib/admin/auth/require-admin';
+import { requireAdmin } from '@/lib/auth/server';
 import { prisma } from '@/lib/db/prisma';
 import { Button } from '@/components/ui/button';
 import {

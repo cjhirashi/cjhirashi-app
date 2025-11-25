@@ -51,7 +51,8 @@ export async function createAgent(formData: FormData) {
 
   const validation = createAgentSchema.safeParse(rawData);
   if (!validation.success) {
-    return { error: validation.error.errors[0].message };
+    const errors = validation.error.flatten();
+    return { error: Object.values(errors.fieldErrors)[0]?.[0] || 'Validation failed' };
   }
 
   const { data: agent, error } = await supabase
@@ -107,7 +108,8 @@ export async function updateAgent(id: string, formData: FormData) {
 
   const validation = updateAgentSchema.safeParse(rawData);
   if (!validation.success) {
-    return { error: validation.error.errors[0].message };
+    const errors = validation.error.flatten();
+    return { error: Object.values(errors.fieldErrors)[0]?.[0] || 'Validation failed' };
   }
 
   const { error } = await supabase
