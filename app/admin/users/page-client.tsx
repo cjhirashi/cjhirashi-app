@@ -1,15 +1,28 @@
 'use client'
 
 import { useState, useCallback, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { EditUserModal } from '@/components/users/edit-user-modal'
 import { UsersFilters, type FilterState } from '@/components/users/users-filters'
 import { UsersTable } from '@/components/users/users-table'
 import { UsersPagination } from '@/components/users/users-pagination'
 import { Plus, Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
 import type { UserRole, UserStatus } from '@/lib/auth/types'
+
+// Lazy load EditUserModal (only loads when user opens modal)
+const EditUserModal = dynamic(
+  () => import('@/components/users/edit-user-modal').then((mod) => ({ default: mod.EditUserModal })),
+  {
+    loading: () => (
+      <div className="flex items-center justify-center p-4">
+        <Loader2 className="h-6 w-6 animate-spin" />
+      </div>
+    ),
+    ssr: false,
+  }
+)
 
 interface UserData {
   id: string
@@ -190,8 +203,8 @@ export function UsersPageClient({
         )}
       </Card>
 
-      {/* Create User Modal */}
-      {initialPermissions.canCreate && (
+      {/* Create User Modal - Only loads when needed */}
+      {initialPermissions.canCreate && isCreatingModalOpen && (
         <EditUserModal
           open={isCreatingModalOpen}
           onOpenChange={setIsCreatingModalOpen}

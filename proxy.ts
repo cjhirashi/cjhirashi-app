@@ -2,7 +2,7 @@ import { updateSession } from "@/lib/supabase/middleware";
 import { protectAdminRoutes } from "@/lib/auth/middleware";
 import { type NextRequest } from "next/server";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   // First, update the session (handle auth refresh)
   const response = await updateSession(request);
 
