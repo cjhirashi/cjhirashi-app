@@ -41,75 +41,117 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Animaciones Custom para la Landing Cjhirashi */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.21 0.006 285.885);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.21 0.006 285.885);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.705 0.015 286.067);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.21 0.006 285.885);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.705 0.015 286.067);
+
+  /* Cjhirashi App - Light Theme */
+  --background: #F8F9FF;
+  --foreground: #1A1C1E;
+
+  --card: #FFFFFF;
+  --card-foreground: #1A1C1E;
+
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1C1E;
+
+  --primary: #0061A4; /* Azul Eléctrico */
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #6F43C0; /* Morado Profundo */
+  --secondary-foreground: #FFFFFF;
+
+  --muted: #E1E2EC;
+  --muted-foreground: #44474F;
+
+  --accent: #D1E4FF;
+  --accent-foreground: #001D36;
+
+  --destructive: #BA1A1A;
+  
+  /* Bordes suavizados para modo claro */
+  --border: #E2E2E6; 
+  --input: #E2E2E6;
+  
+  --ring: #0061A4;
+
+  --chart-1: #0061A4;
+  --chart-2: #6F43C0;
+  --chart-3: #9C4146;
+  --chart-4: #825500;
+  --chart-5: #006C4C;
+
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #1A1C1E;
+  --sidebar-primary: #0061A4;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #D1E4FF;
+  --sidebar-accent-foreground: #001D36;
+  --sidebar-border: #E2E2E6;
+  --sidebar-ring: #0061A4;
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.92 0.004 286.32);
-  --primary-foreground: oklch(0.21 0.006 285.885);
-  --secondary: oklch(0.274 0.006 286.033);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.552 0.016 285.938);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.552 0.016 285.938);
+  /* Cjhirashi App - Dark Theme (Vibrant) */
+  --background: #111318;
+  --foreground: #E2E2E6;
+
+  --card: #1A1C1E;
+  --card-foreground: #E2E2E6;
+
+  --popover: #1A1C1E;
+  --popover-foreground: #E2E2E6;
+
+  /* Azul Vibrante */
+  --primary: #0A84FF; 
+  --primary-foreground: #FFFFFF;
+
+  /* NUEVO: Morado Vibrante */
+  --secondary: #BF5AF2; 
+  --secondary-foreground: #FFFFFF; /* Texto blanco para contraste */
+
+  --muted: #44474F;
+  --muted-foreground: #C4C6D0;
+
+  --accent: #00497D;
+  --accent-foreground: #D1E4FF;
+
+  --destructive: #FFB4AB;
+
+  /* Bordes oscuros tenues */
+  --border: #2A2D35;
+  --input: #2A2D35;
+
+  --ring: #0A84FF;
+
+  --chart-1: #0A84FF;
+  --chart-2: #BF5AF2; /* Actualizado al nuevo morado */
+  --chart-3: #FFB3B4;
+  --chart-4: #FFB951;
+  --chart-5: #6DD58C;
+
+  --sidebar: #1A1C1E;
+  --sidebar-foreground: #E2E2E6;
+  --sidebar-primary: #0A84FF;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #00497D;
+  --sidebar-accent-foreground: #D1E4FF;
+  --sidebar-border: #2A2D35;
+  --sidebar-ring: #0A84FF;
 }
 
 @layer base {
@@ -118,5 +160,15 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Utilitarios adicionales para el Hero Section */
+@layer utilities {
+  .hero-bg {
+    background-color: var(--background);
+    background-image: 
+      radial-gradient(at 0% 0%, color-mix(in srgb, var(--primary) 15%, transparent) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, color-mix(in srgb, var(--secondary) 15%, transparent) 0px, transparent 50%);
   }
 }
