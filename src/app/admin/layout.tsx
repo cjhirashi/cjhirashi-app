@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // 1. Importamos el hook de ruta
 import { 
   LayoutDashboard, 
   Users, 
@@ -16,17 +17,43 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 
+// 2. Definimos la estructura del menú en una variable
+const menuGroups = [
+  {
+    label: "Plataforma",
+    items: [
+      { href: "/admin", icon: LayoutDashboard, label: "Dashboard" },
+      { href: "/admin/users", icon: Users, label: "Usuarios" },
+      { href: "/admin/agents", icon: Bot, label: "Agentes IA" },
+    ]
+  },
+  {
+    label: "Sistema",
+    items: [
+      { href: "/admin/settings", icon: Settings, label: "Configuración" },
+    ]
+  }
+];
+
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname(); // 3. Obtenemos la ruta actual
+
+  // Función helper para verificar si un item está activo
+  const isItemActive = (href: string) => {
+    // Para la ruta raíz exacta "/admin"
+    if (href === "/admin") return pathname === "/admin";
+    // Para sub-rutas (ej: /admin/users activa /admin/users)
+    return pathname.startsWith(href);
+  };
+
   return (
-    // Adaptado: Usa bg-background y text-foreground del sistema
     <div className="flex min-h-screen w-full flex-col bg-background text-foreground md:flex-row font-sans">
       
       {/* --- SIDEBAR DESKTOP --- */}
-      {/* Adaptado: bg-sidebar, border-sidebar-border */}
       <aside className="hidden w-72 flex-col border-r border-sidebar-border bg-sidebar md:flex inset-y-0 fixed z-10 h-full transition-colors duration-300">
         
         {/* Logo Area */}
@@ -39,38 +66,26 @@ export default function AdminLayout({
           </Link>
         </div>
 
-        {/* Navigation */}
-        <nav className="flex-1 overflow-auto py-6 px-4 space-y-2">
-          <p className="text-xs font-bold text-muted-foreground px-3 mb-2 uppercase tracking-wider">Plataforma</p>
-          
-          {/* Item Activo */}
-          <NavItem 
-            href="/admin" 
-            icon={<LayoutDashboard className="h-4 w-4" />} 
-            label="Dashboard" 
-            active 
-          />
-          
-          {/* Items Inactivos */}
-          <NavItem 
-            href="/admin/users" 
-            icon={<Users className="h-4 w-4" />} 
-            label="Usuarios" 
-          />
-          <NavItem 
-            href="/admin/agents" 
-            icon={<Bot className="h-4 w-4" />} 
-            label="Agentes IA" 
-          />
-          
-          <div className="my-6 border-t border-sidebar-border/50" />
-          
-          <p className="text-xs font-bold text-muted-foreground px-3 mb-2 uppercase tracking-wider">Sistema</p>
-          <NavItem 
-            href="/admin/settings" 
-            icon={<Settings className="h-4 w-4" />} 
-            label="Configuración" 
-          />
+        {/* Navigation Dinámica */}
+        <nav className="flex-1 overflow-auto py-6 px-4 space-y-6">
+          {menuGroups.map((group, index) => (
+            <div key={index}>
+              <p className="text-xs font-bold text-muted-foreground px-3 mb-2 uppercase tracking-wider">
+                {group.label}
+              </p>
+              <div className="space-y-1">
+                {group.items.map((item) => (
+                  <NavItem 
+                    key={item.href}
+                    href={item.href}
+                    icon={<item.icon className="h-4 w-4" />}
+                    label={item.label}
+                    active={isItemActive(item.href)}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
         </nav>
 
         {/* User Footer */}
@@ -92,7 +107,7 @@ export default function AdminLayout({
       {/* --- CONTENIDO PRINCIPAL --- */}
       <div className="flex flex-col md:ml-72 transition-all duration-300 ease-in-out min-h-screen bg-background">
         
-        {/* Header Flotante / Transparente */}
+        {/* Header Flotante */}
         <header className="sticky top-0 z-30 flex h-16 items-center gap-4 bg-background/80 backdrop-blur-md px-6 border-b border-border/40">
           <Sheet>
             <SheetTrigger asChild>
@@ -100,20 +115,35 @@ export default function AdminLayout({
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            {/* Mobile Nav Content */}
+            {/* Mobile Nav Content Dinámico */}
             <SheetContent side="left" className="w-72 bg-sidebar border-sidebar-border text-sidebar-foreground p-0">
-               <div className="flex h-16 items-center px-6 border-b border-sidebar-border">
+              <div className="flex h-16 items-center px-6 border-b border-sidebar-border">
                   <div className="flex items-center gap-2 font-bold">
                     <div className="bg-primary p-1.5 rounded-lg">
                         <ShieldCheck className="h-5 w-5 text-primary-foreground" />
                     </div>
                     <span>Cjhirashi App</span>
                   </div>
-               </div>
-               <nav className="flex-1 overflow-auto py-6 px-4 space-y-2">
-                  <NavItem href="/admin" icon={<LayoutDashboard className="h-4 w-4"/>} label="Dashboard" active />
-                  <NavItem href="/admin/users" icon={<Users className="h-4 w-4"/>} label="Usuarios" />
-                  <NavItem href="/admin/agents" icon={<Bot className="h-4 w-4"/>} label="Agentes IA" />
+              </div>
+              <nav className="flex-1 overflow-auto py-6 px-4 space-y-6">
+                  {menuGroups.map((group, index) => (
+                    <div key={index}>
+                      <p className="text-xs font-bold text-muted-foreground px-3 mb-2 uppercase tracking-wider">
+                        {group.label}
+                      </p>
+                      <div className="space-y-1">
+                        {group.items.map((item) => (
+                          <NavItem 
+                            key={item.href}
+                            href={item.href}
+                            icon={<item.icon className="h-4 w-4" />}
+                            label={item.label}
+                            active={isItemActive(item.href)}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                </nav>
             </SheetContent>
           </Sheet>
@@ -140,15 +170,15 @@ export default function AdminLayout({
   );
 }
 
-// NavItem Component Adaptado
+// NavItem Component (Sin cambios en la lógica visual, pero ahora recibe props dinámicos)
 function NavItem({ href, icon, label, active = false }: { href: string; icon: any; label: string; active?: boolean }) {
     return (
         <Link href={href} className="block">
             <div 
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all duration-200 text-sm font-medium ${
                     active 
-                    ? 'bg-primary/10 text-primary hover:bg-primary/15' // Activo: Fondo del color primario muy suave
-                    : 'text-muted-foreground hover:text-sidebar-foreground hover:bg-sidebar-accent' // Inactivo: Hover sutil
+                    ? 'bg-primary/10 text-primary hover:bg-primary/15' 
+                    : 'text-muted-foreground hover:text-sidebar-foreground hover:bg-sidebar-accent'
                 }`}
             >
                 {icon}

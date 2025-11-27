@@ -84,18 +84,18 @@ export default function AdminPage() {
       
       {/* Welcome Section */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-         <div>
-             <h1 className="text-3xl font-bold tracking-tight text-foreground">Centro de Comando</h1>
-             <p className="text-muted-foreground mt-1">Monitoreo en tiempo real de tus recursos de IA.</p>
-         </div>
-         <div className="flex gap-3">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">Centro de Comando</h1>
+          <p className="text-muted-foreground mt-1">Monitoreo en tiempo real de tus recursos de IA.</p>
+        </div>
+        <div className="flex gap-3">
             <Button variant="outline" className="border-border text-muted-foreground hover:text-foreground">
                 <Activity className="w-4 h-4 mr-2" /> Logs del Sistema
             </Button>
             <Button className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20">
                 <Zap className="w-4 h-4 mr-2" /> Nueva Tarea
             </Button>
-         </div>
+        </div>
       </div>
 
       {/* KPI Cards */}
@@ -272,7 +272,7 @@ export default function AdminPage() {
           <CardHeader className="pb-3 flex flex-row items-center justify-between">
             <CardTitle className="text-lg font-medium text-foreground">Agentes</CardTitle>
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
-               <span className="relative flex h-2 w-2">
+              <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
